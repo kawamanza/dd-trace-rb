@@ -28,7 +28,6 @@ class TracerActiveRecordTest < TracerTestBase
     app().set :datadog_test_conn, conn
 
     Datadog::Monkey.patch_module(:active_record)
-
     super
   end
 

@@ -23,8 +23,8 @@ module Datadog
 
         def self.start_processing(_name, _start, _finish, _id, payload)
           # trace the execution
-          tracer = ::Rails.configuration.datadog_trace.fetch(:tracer)
-          service = ::Rails.configuration.datadog_trace.fetch(:default_controller_service)
+          tracer = Datadog.configuration[:rails][:tracer]
+          service = Datadog.configuration[:rails][:default_controller_service]
           type = Datadog::Ext::HTTP::TYPE
           span = tracer.trace('rails.action_controller', service: service, span_type: type)
 
